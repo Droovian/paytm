@@ -3,10 +3,11 @@ import axios from "axios";
 import { Appbar } from "../components/Appbar";
 import { Balance } from "../components/Balance";
 import Users from "../components/Users";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [balance, setBalance] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,7 +33,9 @@ const Dashboard = () => {
 
   return (
     <div>
+
       <Appbar />
+      <div className="flex justify-between">
       <div className="m-8">
         {balance !== null ? (
           <Balance value={balance} />
@@ -40,7 +43,17 @@ const Dashboard = () => {
           <p>Loading...</p>
         )}
       </div>
+      <button 
+      onClick={() => {
+        localStorage.removeItem("token");
+        navigate("/signin");
+      }}
+      className="bg-red-500 text-white px-3 py-2 rounded-md mx-10 h-1/2 my-auto
+                        hover:bg-red-400">Logout</button>
+      </div>
       <Users/>
+
+      
     </div>
   );
 };

@@ -55,7 +55,7 @@ const Signin = () => {
                                         }
                                     );
 
-                                    localStorage.setItem("signtoken", response.data.token);
+                                    localStorage.setItem("token", response.data.token);
                                     navigate('/dashboard');
                                 } catch (error) {
                                     console.error('Error signing in:', error);

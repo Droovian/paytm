@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import axios from "axios";
 import { useState } from 'react';
 
@@ -10,6 +10,9 @@ const Money = () => {
     const [amount, setAmount] = useState(0);
         // {console.log(id, name);}
     return <div className="flex justify-center h-screen bg-gray-100">
+        <div className='absolute top-0 right-0 p-3'>
+            <Link to='/dashboard' className='bg-black text-white px-3 py-2 rounded-md mx-3'>Go Back</Link>
+        </div>
         <div className="h-full flex flex-col justify-center">
             <div
                 className="border h-min text-card-foreground max-w-md p-4 space-y-8 w-96 bg-white shadow-lg rounded-lg"
@@ -49,7 +52,7 @@ const Money = () => {
                             amount
                         }, {
                             headers: {
-                                Authorization: "Bearer " + localStorage.getItem("signtoken")
+                                Authorization: "Bearer " + localStorage.getItem("token")
                             }
                         })
                     }} className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
