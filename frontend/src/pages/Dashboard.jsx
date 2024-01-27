@@ -4,9 +4,12 @@ import { Appbar } from "../components/Appbar";
 import { Balance } from "../components/Balance";
 import Users from "../components/Users";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const Dashboard = () => {
   const [balance, setBalance] = useState(null);
+  const [cookies, setCookies] = useCookies(['firstname']);
+  const userName = cookies.firstname;
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +37,7 @@ const Dashboard = () => {
   return (
     <div>
 
-      <Appbar />
+      <Appbar name={userName} />
       <div className="flex justify-between">
       <div className="m-8">
         {balance !== null ? (

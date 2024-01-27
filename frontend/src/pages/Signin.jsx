@@ -9,6 +9,7 @@ import axios from "axios";
 const Signin = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ const Signin = () => {
             <div className="flex flex-col justify-center">
                 <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
                     <Heading label={"Sign in"}/>
+                    { error && <p className="text-red-500">{error}</p>}
                     <SubHeading label={"Enter credentials to access your account"}/>
                     <div className="flex flex-col space-y-5">
                         <input
@@ -58,7 +60,7 @@ const Signin = () => {
                                     localStorage.setItem("token", response.data.token);
                                     navigate('/dashboard');
                                 } catch (error) {
-                                    console.error('Error signing in:', error);
+                                    setError('Could not sign in, check username/password');
                                     // Handle the error or display an error message to the user
                                 }
                             }}

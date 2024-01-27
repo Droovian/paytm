@@ -16,7 +16,7 @@ const Users = () => {
     }, [filter]);
     return ( 
         <>
-             <div className="font-bold mt-6 text-lg">
+             <div className="font-bold mt-6 text-lg p-2">
                 Users
             </div>
         <div className="my-2">
@@ -34,7 +34,7 @@ const Users = () => {
 function User({user}) {
     const navigate = useNavigate();
 
-    return <div className="flex justify-between">
+    return <div className="flex justify-between p-2">
         <div className="flex">
             <div className="rounded-full h-12 w-12 bg-slate-200 flex justify-center mt-1 mr-2">
                 <div className="flex flex-col justify-center h-full text-xl">
